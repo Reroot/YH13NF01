@@ -1,0 +1,52 @@
+Evverything is 3 tier artiteictire
+
+--Logically 3 tiers--
+ui - 
+service - node/tomcat/springboot/ --- BUT
+
+Dynamics atpemts to 
+rewrite ui elemnts and plug ins for, explose a web api compenet
+expose more web apis. With dynamics you can only focus on the
+ui. Admin UI, buiness users can manipulate without needing a devloper. 
+Cloud based CRM, it can be applied to any system that you want. 
+Expose web api, help rest api work accross consuing systems. 
+
+rest ,, get, post, update, create, delete, put
+
+convereted any http reset into 
+
+/u/jdiajd/randomssn
+
+once exposed any broswer based system, can interact with them. 
+
+
+db - 
+
+Projects
+
+dynamics 365 - ubrellia apps for crm - customer manager
+
+
+
+dynamics crm online, on-premise
+dynamics setup-online crm account
+
+dynmaincs - salese mangagemnt process flow
+demo
+case study
+service managemernt inro - process flow
+
+ui work & non coders
+
+solutions and eneinityes
+
+---
+mod 3 is coding, xrm tool box
+ribbon workbench
+
+crm client side scripting
+custom workflows for backend
+dynmaics as backend -- react project 
+power apps -- nice to have, clients use dynamics for
+the backend. 
+---

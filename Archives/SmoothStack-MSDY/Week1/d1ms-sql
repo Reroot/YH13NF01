@@ -1,0 +1,51 @@
+how entriys workin dynaimcs,, 
+anything you deem as objects in microsoft dynamics.
+sub entri.
+---
+object
+action
+actor
+---
+library->name
+book->genre,author, 
+borrower->name
+---
+
+columb is the header, ie atribuite
+vs rows enenities
+
+result set. 
+
+crud is any system -- 
+
+-more about manipulation
+dml - select, update, delete, insert into
+
+-more about design, define structure
+ddl - truncate, create tabele, 
+create index(creates a search key), drop index,
+
+select columb from tabele
+
+resutl set is a  in memeory table
+
+distinct - select only discint, values, but be careful beucase in
+appies to what is selected. select disninct name, date etc...would be diffren from
+distinct name 
+
+always use '' single quotes, use two '' for 
+
+LIKE is used like a wild card, SELECT * FROM PERSON WHERE FIRSTNAME LIKE "%OK%"
+
+Here are some examples showing different LIKE operators with '%' and '_' wildcards:
+
+LIKE Operator	Description
+WHERE CustomerName LIKE 'a%'	Finds any values that start with "a"
+WHERE CustomerName LIKE '%a'	Finds any values that end with "a"
+WHERE CustomerName LIKE '%or%'	Finds any values that have "or" in any position
+WHERE CustomerName LIKE '_r%'	Finds any values that have "r" in the second position
+WHERE CustomerName LIKE 'a__%'	Finds any values that start with "a" and are at least 3 characters in length
+WHERE ContactName LIKE 'a%o'    Finds any values that start with "a" and ends with "o"
+
+
+

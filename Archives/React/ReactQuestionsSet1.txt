@@ -1,0 +1,126 @@
+>>What is React?
+React is an open-source frontend JavaScript library which is used for building user interfaces especially for single page applications. It is used for handling view layer for web and mobile apps. 
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+>>What are the major features of React?
+The major features of React are:
+
+-It uses VirtualDOM instead RealDOM considering that RealDOM manipulations are expensive.
+-Supports server-side rendering.
+-Follows Unidirectional data flow or data binding.
+-Uses reusable/composable UI components to develop the view
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+>>An Element is a plain object describing what you want to appear 
+on the screen in terms of the DOM nodes or other components. Elements can contain other
+ Elements in their props. Creating a React element is cheap. Once an element is created, 
+ it is never mutated.
+
+The object representation of React Element would be as follows:
+
+const element = React.createElement(
+  'div',
+  {id: 'login-btn'},
+  'Login'
+)
+
+React.createElement() function returns an object:
+
+{
+  type: 'div',
+  props: {
+    children: 'Login',
+    id: 'login-btn'
+  }
+}
+
+<div id='login-btn'>Login</div>
+
+Whereas a component can be declared in several different ways. It can be a class with a render() method. Alternatively, in simple cases, 
+it can be defined as a function. In either case, it takes props as an input, and returns a JSX tree as the output:
+
+const Button = ({ onLogin }) =>
+  <div id={'login-btn'} onClick={onLogin}>Login</div>
+Then JSX gets transpiled to a React.createElement() function tree:
+
+const Button = ({ onLogin }) => React.createElement(
+  'div',
+  { id: 'login-btn', onClick: onLogin },
+  'Login'
+)
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+>>How to create components in React?
+There are two possible ways to create a component.
+
+Function Components: This is the simplest way to create a component. Those are pure JavaScript functions that accept props object as first parameter and return React elements:
+
+function Greeting({ message }) {
+  return <h1>{`Hello, ${message}`}</h1>
+
+}
+Class Components: You can also use ES6 class to define a component. The above function component can be written as:
+
+class Greeting extends React.Component {
+  render() {
+    return <h1>{`Hello, ${this.props.message}`}</h1>
+  }
+}
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+>>What is JSX?
+JSX is a XML-like syntax extension to ECMAScript (the acronym stands for JavaScript XML). Basically it just provides syntactic sugar for the React.createElement() function, giving us expressiveness of JavaScript along with HTML like template syntax.
+
+In the example below text inside <h1> tag return as JavaScript function to the render function.
+
+class App extends React.Component {
+  render() {
+    return(
+      <div>
+        <h1>{'Welcome to React world!'}</h1>
+      </div>
+    )
+  }
+}
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+What are props in React?
+Props are inputs to components. They are single values or objects containing a set of values that are passed to components on creation using a naming convention similar to HTML-tag attributes. They are data passed down from a parent component to a child component.
+
+The primary purpose of props in React is to provide following component functionality:
+
+Pass custom data to your component.
+Trigger state changes.
+Use via this.props.reactProp inside component's render() method.
+For example, let us create an element with reactProp property:
+
+<Element reactProp={'1'} />
+This reactProp (or whatever you came up with) name then becomes a property attached to React's native props object which originally already exists on all components created using React library.
+
+props.reactProp
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+What is the difference between state and props?
+
+State changes should be kept limited and managed to the component as it will be dynamiycally changing data,
+and reacting to the dom. Prop however are static dta that can is passed up or down to componets. 
+They are both js objects
+
+While both of them hold information that influences the output of render, 
+they are different in their functionality with respect to component. Props get passed to the component similar to function parameters whereas state is managed within the component similar to variables declared within a function.
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+componentDidMount()?
+
+componentDidMount() is invoked immediately after a component is mounted (inserted into the tree). Initialization that requires DOM nodes should go here. If you need to load data from a remote endpoint, this is a good place to instantiate the network request.
+
+This method is a good place to set up any subscriptions. If you do that, don’t forget to unsubscribe in componentWillUnmount().
+
+You may call setState() immediately in componentDidMount(). It will trigger an extra rendering, but it will happen before the browser updates the screen. This guarantees that even though the render() will be called twice in this case, the user won’t see the intermediate state. Use this pattern with caution because it often causes performance issues. In most cases, you should be able to assign the initial state in the constructor() instead. It can, however, be necessary for cases like modals and tooltips when you need to measure a DOM node before rendering something that depends on its size or position.
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Why should we not update the state directly?
+If you try to update state directly then it won't re-render the component.
+
+//Wrong
+this.state.message = 'Hello world'
+Instead use setState() method. It schedules an update to a component's state object. When state changes, the component responds by re-rendering.
+
+//Correct
+this.setState({ message: 'Hello World' })
+Note: You can directly assign to the state object either in constructor or using latest javascript's class field declaration syntax.

@@ -1,0 +1,23 @@
+On trigger setting drigger on inster and on delrte, this way you can defensivly protect the system with trigger
+
+when you run a delete the trigger assoatied witht that tatbel are always fired. delete takes a long time due to caching
+and preparting for rollbacks.
+
+when you do a truncate, it ignores triggers, and drops all data. with trunchate it wont be rolled back. 
+
+PROGRAMATIC SQL
+-------------------------------------------------------------------------------------------------------------------
+Stored procedure contains a sql of sql commands, it's a programming lanaguage. 
+ex keep track of all empoyees that work for each department. let's say we want to keep track of total salasry
+we can create another colbume, uses a block of code and update
+
+begin 
+    update depsal
+    set totalsal = select sum(salasry)
+
+    then you can call it, using call 
+-------------------------------------------------------------------------------------------------------------------
+    USE CURORS TO ITERATE THROUGH ROWS - dexalre curr_num intodelcare dnum 
+    you can also use cursors**, define a curor then you define a curor, each value is fetch into a variable
+    , then you update each var. curors is like result set and needs to  marked. UNTIL DONE, it's like a LOOP
+-------------------------------------------------------------------------------------------------------------------

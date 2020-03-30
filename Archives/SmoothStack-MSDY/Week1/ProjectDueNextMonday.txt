@@ -1,0 +1,98 @@
+HW
+IMPORT THE NEW LIB RARY NWB INTO 
+
+THEN SOLVE THIS EXERCISE
+
+Retrieve the names of employees in 
+department 5 who work more than 10 hours
+
+Problem 8. 
+
+Select e.FNAME from 
+employee e,  
+project p, 
+works_on w,
+where 
+e.dno = 5 
+and 
+e.ssn = w.Essn 
+and 
+w.Pno = p.pnumber 
+and 
+p.pname = 'ProductX' 
+and 
+w.hours > 10;
+
+Problem 9. 
+For each project, list the project name and the 
+total hours per week (by allemployees) spent on 
+that project
+
+SELECT PNAME, SUM(HOURS)
+
+FROM PROJECT, WORKS_ON
+
+WHERE PROJECT.Pnumber=WORKS_ON.Pno
+
+GROUP BY PROJECT.Pnumber
+
+Problem 10.
+
+select e.fname, e.minit, e.lname
+from   employee e
+where  not exists(
+         select p.pnumber 
+         from   projects p
+         where  not exists(
+                  select w1.essn 
+                  from   works_on w1
+                  where  w1.pno = p.pnumber and w1.essn = e.ssn));
+
+11.Retrieve the names of employees who do not work on any project.
+
+select fname,minit,lname
+from   employee 
+where  not exists (
+          select essn 
+          from   works_on 
+          where  ssn = essn);
+
+12.Find the names and addresses of employees who work on at least one project located in Houston but whose department has no location in Houston.
+
+f) Retrieve the names and addresses of all employees who work on at 
+   least one project located in Houston but whose department has no 
+   location in Houston.
+
+select e.fname, e.minit, e.lname, e.address
+from   employee e, projects p, works_on w
+where  e.ssn = w.essn and p.pnumber = w.pno and p.plocation = 'Houston' and 
+       not exists (
+          select d.dnumber 
+          from   dept_locations d
+          where  e.dno = d.dnumber and d.dlocation = 'Houston');
+
+
+13.List the last names of department managers who have no dependents.
+
+select e.lname
+from   employee e, department d 
+where  e.ssn = d.mgrssn and 
+         not exists(
+             select essn 
+             from   dependent 
+             where  d.mgrssn = essn);
+
+14.Find details of those employees whose salary is > the average salary for allemployees. Output salary in descending order.
+
+Select * from employee where e.salary > AVG(salary) ORDER BY e.salary DESC
+
+15.Find details of those employees whose e.salary is > the average salary for
+ allemployees in his/her department. 
+Output salary in ascending order
+
+Select * from employee e, department d 
+inner join e.dno = d.dnumber  
+where salary > ALL(Select avg(e.salary) 
+from employee group by e.dno) ORDER BY e.salary 
+
+

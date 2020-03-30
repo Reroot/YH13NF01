@@ -1,0 +1,28 @@
+How to bind methods or event handlers in JSX callbacks?
+--i
+class Component extends React.Componenet {
+  constructor(props) {
+    super(props)
+    this.handleClick = this.handleClick.bind(this)
+  }
+
+  handleClick() {
+    // ...
+  }
+}
+
+--ii
+Public class fields syntax: If you don't like to use bind approach then public class fields syntax can be used to correctly bind callbacks.
+handleClick = () => {
+  console.log('this is:', this)
+}
+<button onClick={this.handleClick}>
+  {'Click me'}
+</button>
+
+--iii
+
+Arrow functions in callbacks: You can use arrow functions directly in the callbacks.
+<button onClick={(event) => this.handleClick(event)}>
+  {'Click me'}
+</button>

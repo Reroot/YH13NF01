@@ -1,0 +1,105 @@
+How to debug Node JS application.
+
+
+When started with the --inspect switch,
+ a Node.js process listens for a debugging client. By default, it will listen at host and port 127.0.0.1:9229. Each process is also assigned a unique UUID.
+node --inspect server.js
+break and blackbox
+
+Explain about package.json file.
+
+All npm packages contain a file, usually in the project root, called package.json - this file holds various metadata relevant to the project. This file is used to give information to npm that allows it to identify the project as well as handle the project's dependencies. It can also contain other metadata such as a project description, the version of the project in a particular distribution, 
+
+loaders in Webpack. Why we need to add loaders ?
+
+Add dependencies, and have a more fuild application with services, routing, or anything else
+Why is Node.js Single-threaded?
+yes, but it can be mutli threaded with async 
+
+What is the difference between Node.js and Ajax?
+one is single threaded the other is asyncronus, with promises, and callbacks
+Explain callback in Node.js.
+a function within a function that is called when something is loaded, compeleted, or created. 
+What are the features of Node.js?
+What Is Chaining Process In Node.Js?
+Explain about directives in Angular.
+Explain about virtual DOM in react JS.
+Difference between call back and promise.
+Which unit testing tool you have used in the project ?
+How to do async call in unit testing tools.
+Encryption and Decryption in Node js
+Benefits of Mongo DB over other DB.
+How to update multiple records in mongo DB? 
+Ways to improve performance of the web page ?
+Explain about cordova.
+How To Load HTML In Node.Js?
+script tags
+How To Make Post Request In Node.Js?
+
+const axios = require('axios')
+
+axios.post('https://flaviocopes.com/todos', {
+  todo: 'Buy the milk'
+})
+.then((res) => {
+  console.log(`statusCode: ${res.statusCode}`)
+  console.log(res)
+})
+.catch((error) => {
+  console.error(error)
+})
+
+-----
+
+Request library:
+
+const request = require('request')
+
+request.post('https://flaviocopes.com/todos', {
+  json: {
+    todo: 'Buy the milk'
+  }
+}, (error, res, body) => {
+  if (error) {
+    console.error(error)
+    return
+  }
+  console.log(`statusCode: ${res.statusCode}`)
+  console.log(body)
+})
+
+---
+
+A POST request is possible just using the Node standard modules, although it’s more verbose than the two preceding options:
+
+const https = require('https')
+
+const data = JSON.stringify({
+  todo: 'Buy the milk'
+})
+
+const options = {
+  hostname: 'flaviocopes.com',
+  port: 443,
+  path: '/todos',
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'Content-Length': data.length
+  }
+}
+
+const req = https.request(options, (res) => {
+  console.log(`statusCode: ${res.statusCode}`)
+
+  res.on('data', (d) => {
+    process.stdout.write(d)
+  })
+})
+
+req.on('error', (error) => {
+  console.error(error)
+})
+
+req.write(data)
+req.end()

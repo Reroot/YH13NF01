@@ -1,0 +1,115 @@
+What are the features of JavaScript?
+ES6 -- spread ... rest, promises, destructuring, hooks, dynamic typed, syscronus, async,
+JavaScript is a lightweight, interpreted programming language.
+JavaScript is designed for creating network-centric applications.
+JavaScript is complementary to and integrated with Java.
+JavaScript is complementary to and integrated with HTML.
+JavaScript is open and cross-platform.
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+What are the advantages of JavaScript?
+Less server interaction, You can validate user input before sending the page off to the server.
+Immediate feedback to the visitors? They don’t have to wait for a page reload to see if they have forgotten to enter something.
+Increased interactivity, You can create interfaces that react 
+when the user hovers over them with a mouse or activates them via the keyboard
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Why is javascript called Richer Interface?
+You can use JavaScript to include such items as drag-and-drop components and sliders to give a Rich Interface to your site visitors.
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Is javascript case-sensitive?
+Yes, JavaScript is a case-sensitive language. This means that language keywords, variables, function names, and any other identifiers must always be typed with a consistent capitalization of letters.
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+How can we create an object in JS?
+var object = 
+        { 
+         name: "obj",
+         age: 10
+         };
+How can we read the properties of an object in js?
+Can write and read properties of an object using the dot(.) notation.
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+How many types of functions JS support?
+A function in JavaScript can be either named or anonymous.
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+How to define an anonymous function?
+An anonymous function can be defined in a similar way as a normal function but it would not have any name.
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Which built-in method calls a function for each element in the array?
+forEach method calls a function for each element in the array.
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Which type of variable among global and local, takes precedence over other if names are same?
+A local variable takes precedence over a global variable with the same name.
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Difference between “var” and “let” Keywords?
+Var was there from the beginning but the let was introduced in ES2015/ES6.
+Let has block scope and “Var” has function scope
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Difference between “==” and “===” ?
+” ==” only compares values “===” compare values and type both.
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Difference between “undefine” and “NULL” Keywords?
+When you define a var but not assign any value. typeof(undefine)=> undefine
+Null- manually done. typeof(null)=> object
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+What is prototypal Inheritance?
+Every object has a property called a prototype, where we can add methods to it and
+ when you create another object from these the newly created object will automatically inherit its parent’s property.
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Which built-in method sorts the elements of an array?
+Sort method sorts the elements of an array.
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Which built-in method reverses the order of the elements of an array?
+Reverse method reverses the order of the elements of an array ?? the first becomes the last, and the last becomes the first.
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+What is SetTimeout()?
+When you setTimeout it becomes asynchronous and it has to wait on the stack to get everything got finished
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+How to add one new element at end of an array in javascript?
+Push method adds one or more elements to the end of an array and returns the new length of the array.
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+What is closure and how do you use it?
+When a function returns the other function the returning function will hold its environment and this is known as closure.
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+1What will the following code output?
+for (var i = 0; i < 3; i++) {
+  setTimeout(function() { alert(i); }, 1000 + i);
+}
+------Answer
+The goal of the code above is to alert the numbers 0, 1, and 2 each after 1, 1.1, and 1.2 seconds, respectively. The problem though, is that if you run the above code in your console, you actually get the number 3 alerted 3 times after 1, 1.1, and 1.2 seconds. This is because of an issue with JavaScript closures. Click here to run the above code and see the output for yourself.
+
+A JavaScript closure is when an inner function has access to its outer enclosing function's variables and properties. In the code above, the following line of code:
+
+setTimeout(function() { alert(i); }, 1000 + i);
+uses a variable i which is declared outside of itself. The variable i is actually declared within the for loop and the inner function accesses it. So when the for loop is done running, each of the inner functions refers to the same variable i, which at the end of the loop is equal to 3. Our goal is for each inner function to maintain its reference to the variable i without the value of it being altered. We'll solve this using an IIFE, or an immediately-invoked function expression.
+
+for (var i = 0; i < 3; i++) {
+  setTimeout(function(i_local) { 
+    return function() { alert(i_local); } 
+  }(i), 1000 + i);
+}
+
+We pass the variable i into the outer function as a local variable named i_local, where we then return a function that will alert the i_local for us. This should now correctly alert the numbers 0, 
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+3How would you use a closure to create a private counter?
+Answer
+You can create a function within an outer function (a closure) that allows you to update a private variable but the variable wouldn't be accessible from outside the function without the use of a helper function.
+
+function counter() {
+  var _counter = 0;
+  // return an object with several functions that allow you
+  // to modify the private _counter variable
+  return {
+    add: function(increment) { _counter += increment; },
+    retrieve: function() { return 'The counter is currently at: ' + _counter; }
+  }
+}
+
+// error if we try to access the private variable like below
+// _counter;
+
+// usage of our counter function
+var c = counter();
+c.add(5); 
+c.add(9); 
+
+// now we can access the private variable in the following way
+c.retrieve(); // => The counter is currently at: 14

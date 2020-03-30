@@ -1,0 +1,30 @@
+Have you scheduled tasks in the past? What kind of tasks?
+Normally you will schedule batch jobs.
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ls - list files and directories. You can highlight common flags like -d, -a, -l, ...
+rm - remove files and directories. You should mention -r for recursive removal
+rmdir - remove directories but you should mention it's possible to use rm for that
+grep - print lines that match patterns. Could be nice to mention -v, -r, -E flags
+wc - print newline, word, and byte counts
+curl - tranfer a URL or mention common usage like downloading files, API calls, ...
+touch - update timestamps but common usage is to create files
+man - reference manuals
+ns lookup or dig - query nameservers
+df - provides info regarding file system disk space usage
+How to change the permissions of a file? =Using the chmod command.
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-What do we grep for in each of the following commands?:
+    1-grep '[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}' some_file
+    2-grep -E "error|failure" some_file
+    3-grep '[0-9]$' some_file
+
+1-An IP address
+2-The word "error" or "failure"
+3-Lines which end with a number
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-Running the command df you get "command not found". What could be wrong and how to fix it?
+
+Most likely the default/generated $PATH was somehow modified or overridden thus not 
+containing /bin/ where df would normally go. This issue could also happen 
+if bash_profile or any configuration file of your interpreter was wrongly modified, 
+causing erratics behaviours. You would solve this by fixing your $PATH variable:

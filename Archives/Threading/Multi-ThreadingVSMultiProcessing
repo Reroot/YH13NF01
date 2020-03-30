@@ -1,0 +1,19 @@
+Multithreading:
+Multithreading is a system in which multiple 
+threads are created of a process for increasing 
+the computing speed of the system. In multithreading, many threads of a process are executed simultaneously and process creation in multithreading is done according 
+to economical.
+
+Multithreading:
+Multithreading is a system in which multiple threads are created of a process for increasing the computing speed of the system.
+ In multithreading, many threads of a process are executed simultaneously and process creation in multithreading is done according 
+ to economical.
+
+
+Difference between Multiprocessing and Multithreading:
+
+S.NO	MULTIPROCESSING	MULTITHREADING
+1.	In Multiprocessing, CPUs are added for increasing computing power. | While In Multithreading, many threads are created of a single process for increasing computing power.
+2.	In Multiprocessing, Many processes are executed simultaneously. | 	While in multithreading, many threads of a process are executed simultaneously.
+3.	Multiprocessing are classified into Symmetric and Asymmetric. |	While Multithreading is not classified in any categories.
+4.	In Multiprocessing, Process creation is a time-consuming process. |	While in Multithreading, process creation is according to eco

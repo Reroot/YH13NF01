@@ -1,0 +1,33 @@
+Epiq -
+
+Backend Developer in Digital Forensics & Ediscovery at Epiq Systems [Contract]  - 2018 (February)- 2019 (July) - Seattle WA
+Worked to update legacy code for in-house ediscovery software, used javascript to fetch from web apis and databases, filter data from forensics databases, and optimize performance. Tested to make sure our sites scaled across browsers, and client could access their data securely. [Javascript, Java, Node, SQL, Python]
+Test security of in-house tools and APIs. Process client evidence with ediscovery software, and provide litigation support, and test cloud access. Worked on different layers of Spring MVC architecture. Worked to improve input validation optimize, and correct searches. 
+
+---Day to Day
+I used Git for all of your projects, debugging, and comments, and code review
+We worked in an agile sprint project style, and had standups every week for client projects.
+Generate componet content
+Work with client data to filter based on key search strings
+Update legacy java code software that helps create document manifets for court, with new more advanced code.
+Making sure secuity protolals are followed up to the height tokenization and authorisiztion stardards
+Configuration
+Talking to dev team about issues
+Making in-house applications more responise in javascript
+
+---
+
+Full Stack Developer at PlayNetwork/Touchtunes - Van’s Data Project  - 2017 (January) - 2018 (February) (Node js. Microsoft PowerShell, Javascript) [Contract]- Redmond WA
+Working to build a react framework web app by securing and making sure data was passed down correctly, via state and props via Javascript. Van’s store music playnetwork api data passed and made to have reusable React Components, and be passed more efficiently, rather than using a just Javascript. 
+Worked on securing the PlayNet Radio APIs. Used React, Node.js, Javascript, and Visual Studio tools as well as the Cygwin64 Terminal to create massive data sets, filter, and process data for market analysis. Using Javascript to secure api by adding timestamp requests and input parameter validation. 
+Working on rebuild of the site with inner architecture using complex Object-Oriented concepts within the new React website. in improving the performance of our website and passed data. Optimizing fetching of data with Javascript calls, and creating a more app platform asynchronous, effient, and more adaptive to the play net API.
+
+
+------Day to Day
+
+Pulling data to and from NodeJS+SQL
+Handing and fetching with ExpresJS to post music data to radios
+Fetching Song data to filter and organize for the vans project
+Handel errors that go wrong with song data 
+Validate Userers and assign Keys to acess the api
+Sending Async Request and handeling file uploads and downloads

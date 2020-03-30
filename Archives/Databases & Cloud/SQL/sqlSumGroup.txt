@@ -1,0 +1,60 @@
+The task was to write an SQL query that returns the list 
+of invoices with the total price of each. The data and 
+the relational database format is given as it is shown in 
+the picture.
+select inv_num , sum(price) "sum" from invoice_items 
+group by inv_num;
+
+***ANS
+SELECT 
+    inv_num, sum(price) 
+FROM 
+    invoice_items 
+GROUP BY 
+    inv_num 
+ORDER BY 
+    inv_num DESC;
+ 
+----------- 
+
+As it is seen, the database just contains one table named 
+invoice_items which contains three records.
+
+    
+bash$ sqlite3
+sqlite>
+CREATE TABLE invoice_items (inv_num INTEGER, item TEXT, price INTEGER);
+INSERT INTO "invoice_items" VALUES(3,'a',10);
+INSERT INTO "invoice_items" VALUES(3,'b',15);
+INSERT INTO "invoice_items" VALUES(1,'c',7);
+sqlite> .save invoices;
+sqlite>
+bash$
+
+At this point, your data has been added and you have a tiny database with one table and three records. Now, go back to sqlite3 and run the simple query to see all records first. 
+
+bash$ sqlite3
+sqlite> .mode column
+sqlite> .headers on
+sqlite> select * from invoice_items;
+inv_num     item       price       
+---------   ---------  -----------
+3           a          10
+3           b          15
+1           c          7
+sqlite>
+
+
+OK so far, we got the data. The solution below uses the sum() function to summarize (to sum up) the values in the price column. We need to calculate the total price for each invoice item and that function does the work. Then, we need to aggregate the records by using the GROUP BY clause. Then we need to sort the results by using the ORDER BY clause in descending order (that is what the DESC word denotes). These are built into SQL and every implementation should be able understand them, not only sqlite3. The one-line SQL query looks like this:
+
+SELECT inv_num, sum(price) FROM invoice_items GROUP BY inv_num ORDER BY inv_num DESC;
+
+Let's run the above query in sqlite3 prompt as shown below:
+
+bash$ sqlite3
+sqlite> select inv_num, sum(price) from invoice_items group by inv_num order by inv_num desc;
+inv_num     sum(price)
+-------     ----------
+3           25
+1           7
+

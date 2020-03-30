@@ -1,0 +1,67 @@
+Linux process information, then check the spefic process (CPU usage, memory, user information, etc.)?
+ps aux ; then you can pipe to specify the process
+ps aux | grep ($processname)
+OR you can us Top is updated every 2 secs
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+check kerennel version? uname -a ; -a tag is All -v version, -r relase
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+how would you check your ip address? ifconfig, or ip adder show 0
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+check disk space/disk space using, disk free? df -ah ; ah makes i readable
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+manage a service on a system? or service (service name) status (arg:start/stop)
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+check size of total of a directoty? du -sh (direcotry)
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+hcheck for open ports? netstat -tulpn ; mpre readable
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+run any command as root with sudo
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+head and tail ($filename)
+Enter head and tail. Both are utilities for 
+showing a specified number of lines from the top or bottom of the file.  
+Let's try it with our file.
+OR --  tail -n 3 pythonParse1.py
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+wc ---The wc command can help with that. Short for "word count," wc can count the number of bytes, characters, words, or lines in the file. In our case, we want to know the number of lines.
+$ wc -l jan2017articles.csv
+93 jan2017articles.csv
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+grep
+Out of these 92 articles, how many of them were about a security topic? 
+For our purposes, let's say we're interested in articles that mention security anywhere in the entry, whether in the title, the list of tags, or somewhere else.
+The format we used was grep, followed by the -i flag (which tells grep not to be case sensitive)
+
+$ grep -i "security" jan2017articles.csv
+
+30 Jan 2017,Article,Tiberius Hefflin,4 ways to improve your security online right now,3,/article/17/1/4-ways-improve-your-online-security,Security and encryption,1242
+28 Jan 2017,Article,Subhashish Panigrahi,How communities in India support privacy and software freedom,0,/article/17/1/how-communities-india-support-privacy-software-freedom,Security and encryption,453
+27 Jan 2017,Article,Alan Smithee,Data Privacy Day 2017: Solutions for everyday privacy,5,/article/17/1/every-day-privacy,"Big data, Security and encryption",1424
+04 Jan 2017,Article,Daniel J Walsh,50 ways to avoid getting hacked in 2017,14,/article/17/1/yearbook-50-ways-avoid-getting-hacked,"Yearbook, 2016 Open Source Yearbook, Security and encryption, Containers, Docker, Linux",2143
+The format we used was grep, followed by the -i flag (which tells grep not to be case sensitive), followed by the pattern we wanted to search for, and then the file in which we were searching.
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+It looks like we had four security-related articles last month. But let's imagine we got a much longer list than we could easily count. Using a pipe, we could combine grep with the wc command we just learned about above, to get a count of the total lines mentioning security.
+
+$ grep -i "security" jan2017articles.csv | wc -l
+
+4
+
+In this case, wc took the output of our grep command, and used it as its input, without ever having to worry about saving it anywhere first. This is why piping input and output, in particular when combined with a little shell scripting, makes the terminal such a powerful tool for data analysis.
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+tr
+A CSV file is a pretty helpful format for many analysis scenarios, but what if you need to convert 
+the file to a different format for use in a different application? Maybe you need tab separators instead
+ of commas, or maybe you want to change them to some HTML so that you can use the data output in a table. The tr command can help you with that,
+  by translating from one type of character to another. Like the other examples, you can also pipe input and output to this command.
+Let's try another multi-part example, by creating a TSV (tab separated values) file with just the articles that published on January 20.
+
+$ grep "20 Jan 2017" jan2017articles.csv | tr ',' '\t' > jan20only.tsv
+What's going on here? First, we searched for the date in question, using grep. We piped this output to the tr command, which we used to replace the commas with tabs (denoted with '\t'). But where did it go? Well, the > character redirected the output to our new file instead of the screen. All of this work in one command sequence. We can then verify that the jan20only.tsv file contains the data that we expected.
+
+$ cat jan20only.tsv
+20 Jan 2017     Article Kushal Das      5 ways to expand your project's contributor base        2       /article/17/1/expand-project-contributor-base    Getting started 690
+20 Jan 2017     Article D Ruth Bavousett        How to write web apps in R with Shiny   2       /article/17/1/writing-new-web-apps-shiny Web development 218
+20 Jan 2017     Article Jason Baker     "Top 5: Shell scripting  the Cinnamon Linux desktop environment  and more"       0       /article/17/1/top-5-january-20  Top 5   214
+20 Jan 2017     Article Tracy Miranda   How is your community promoting diversity?      1       /article/17/1/take-action-diversity-tech Diversity and inclusion 1007
